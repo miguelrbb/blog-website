@@ -1,0 +1,28 @@
+
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+<p> <%= textContent %> </p>
+
+
+<% if (post.length !== 0) { %>
+    <h2 class="posts-header">Posts</h2>
+<% } %>
+
+<section class="posts">
+
+  <% post.forEach(function(value) { %>
+
+    <h4><%= value.title %></h4>
+
+    <% if (value.post.length >=100) { %>
+        <% value.post = value.post.slice(0, 100) %>
+        <p> <%= value.post %>... <a class="view-more-link" href="/posts/<%=value.title%>">View more</a> </p>
+    <% } else { %>
+        <p><%= value.post %></p>
+    <% } %>
+
+  <% }) %>
+
+</section>
+<%- include("partials/footer") -%>
